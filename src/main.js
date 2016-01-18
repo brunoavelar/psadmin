@@ -1,9 +1,9 @@
 $ = jQuery = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Home = require('./components/homePage');
-var About = require('./components/about/aboutPage');
-var Header = require('./components/common/header');
+var Home = require('./components/homePage.jsx');
+var About = require('./components/about/aboutPage.jsx');
+var Header = require('./components/common/header.jsx');
 
 (function(win){
     "use strict"
