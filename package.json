@@ -19,6 +19,7 @@
     "gulp-eslint": "^1.1.1",
     "gulp-open": "^1.0.0",
     "jquery": "^2.2.0",
+    "lodash": "^4.0.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-router": "^1.0.3",
