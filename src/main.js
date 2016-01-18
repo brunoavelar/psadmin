@@ -3,6 +3,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
+var Header = require('./components/common/header');
 
 (function(win){
     "use strict"
@@ -13,11 +14,12 @@ var About = require('./components/about/aboutPage');
 
             switch (this.props.route) {
                 case 'about': Child = About; break;
-                default: Child = Home;
+                default: Child = Home; break;
             }
 
             return (
                 <div>
+                    <Header />
                     <Child />
                 </div>
             );
@@ -29,7 +31,7 @@ var About = require('./components/about/aboutPage');
         ReactDOM.render(<App route={route} />, document.getElementById('app'));
     }
 
-    win.addEventListener('haschange', render);
+    win.addEventListener('hashchange', render);
     render();
 
 })(window);
