@@ -8,7 +8,7 @@ var Header = React.createClass({
         return (
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
-                    <IndexLink  to="/" className="navbar-brand">
+                    <IndexLink to="/" className="navbar-brand">
                         <img src="images/pluralsight-logo.png" />
                     </IndexLink>
                     <ul className="nav navbar-nav">
