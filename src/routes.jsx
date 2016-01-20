@@ -9,10 +9,10 @@ var browserHistory = reactRouter.BrowserHistory;
 
 var routes = (
     <Router history={browserHistory}>
-        <Route path="/" component={require('./components/app.jsx')}>
+        <Route name="app" path="/" component={require('./components/app.jsx')}>
             <IndexRoute component={require('./components/homePage.jsx')} />
-            <Route path="/authors" component={require('./components/authors/authorPage.jsx')} />
-            <Route path="/about" component={require('./components/about/aboutPage.jsx')} />
+            <Route name="authors" path="/authors" component={require('./components/authors/authorPage.jsx')} />
+            <Route name="about" path="/about" component={require('./components/about/aboutPage.jsx')} />
         </Route>
     </Router>
     );
