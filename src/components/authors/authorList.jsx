@@ -19,19 +19,20 @@ var AuthorList = React.createClass({
 
         return (
             <div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.authors.map(createAuthorRow, this)}
-                    </tbody>
-                </table>
-            </div>
-        );
+				<table className="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+					{this.props.authors.map(createAuthorRow, this)}
+					</tbody>
+				</table>
+			</div>
+
+			);
     }
 
 });
