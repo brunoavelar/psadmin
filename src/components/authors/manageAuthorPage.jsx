@@ -1,9 +1,12 @@
 var React = require('react');
 var AuthorForm = require('./authorForm.jsx');
 var AuthorApi = require('../../api/authorApi')
+var History = require('react-router').History;
 
 var manageAuthorPage = React.createClass({
 	displayName: "manage Author Page",
+    mixins: [ History ],
+
 	getInitialState: function(){
 		return{
 			author: { id: '', firstName: '', lastName: '' }
@@ -20,6 +23,8 @@ var manageAuthorPage = React.createClass({
     saveAuthor: function(event){
         event.preventDefault();
         AuthorApi.saveAuthor(this.state.author);
+
+        this.history.pushState(null, 'authors');
     },
 
 	render: function() {
