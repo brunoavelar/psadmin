@@ -10,7 +10,8 @@ var browserHistory = reactRouter.BrowserHistory;
 
 var app = require('./components/app.jsx');
 var homePage = require('./components/homePage.jsx');
-var authorPage = require('./components/authors/authorPage.jsx');
+var authorsPage = require('./components/authors/authorsPage.jsx');
+var manageAuthorPage = require('./components/authors/manageAuthorPage.jsx');
 var aboutPage = require('./components/about/aboutPage.jsx');
 var notFoundPage = require('./components/notFoundPage.jsx');
 
@@ -29,11 +30,12 @@ var routes = (
 
 			<IndexRoute component={homePage} />
 
-			<Route name="authors" path="authors" component={authorPage} />
-			<Route name="about" path="about" component={aboutPage} />
+			<Route path="/authors" component={authorsPage} />
+			<Route path="/author" component={manageAuthorPage} />
+			<Route path="/about" component={aboutPage} />
 
-			<Redirect from="/about-us" to="/about" />
-			<Redirect from="/about/*" to="/about" />
+			<Redirect from="about-us" to="about" />
+			<Redirect from="about/*" to="about" />
 			<Route path="*" component={notFoundPage} />
         </Route>
     </Router>
