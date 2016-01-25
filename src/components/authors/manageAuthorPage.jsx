@@ -2,11 +2,20 @@ var React = require('react');
 var AuthorForm = require('./authorForm.jsx');
 var AuthorApi = require('../../api/authorApi')
 var History = require('react-router').History;
+var Lifecycle = require('react-router').Lifecycle;
 var toastr = require('toastr');
 
 var manageAuthorPage = React.createClass({
 	displayName: "manage Author Page",
-    mixins: [ History ],
+    mixins: [ History, Lifecycle ],
+
+    isDirty: false,
+
+    routerWillLeave: function(nextLocation) {
+        if (this.isDirty){
+            return 'Your work is not saved! Are you sure you want to leave?'
+        }
+    },
 
 	getInitialState: function(){
 		return{
@@ -15,10 +24,10 @@ var manageAuthorPage = React.createClass({
 		}
 	},
 	setAuthorState: function(event){
-		var field = event.target.name;
+        this.isDirty = true;
+        var field = event.target.name;
 		var value = event.target.value;
         this.state.author[field] = value;
-
 		return this.setState({ author: this.state.author });
 	},
 
@@ -48,19 +57,23 @@ var manageAuthorPage = React.createClass({
         }
 
         AuthorApi.saveAuthor(this.state.author);
-        toastr.success('Author saved.')
+        this.isDirty = false;
+        toastr.success('Author saved.');
         this.history.pushState(null, 'authors');
     },
 
 	render: function() {
 		return (
-			<AuthorForm
-                author={this.state.author}
-                onChange={this.setAuthorState}
-                onSave={this.saveAuthor}
-                errors={this.state.errors}
-			/>
-		);
+            <div>
+                <AuthorForm
+                    author={this.state.author}
+                    onChange={this.setAuthorState}
+                    onSave={this.saveAuthor}
+                    errors={this.state.errors}
+                />
+            New State: {this.state.isSaved}
+            </div>
+        );
 	}
 
 });
