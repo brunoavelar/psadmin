@@ -25,13 +25,14 @@ function logLeavingAbout(){
 
 var routes = (
     <Router history={browserHistory}>
-		<Route name="app" path="/" component={app}>
-			<Route path="about" component={aboutPage} onEnter={logEnteringAbout} onLeave={logLeavingAbout} />
+        <Route name="app" path="/" component={app}>
+            <Route path="about" component={aboutPage} onEnter={logEnteringAbout} onLeave={logLeavingAbout} />
 
-			<IndexRoute component={homePage} />
+            <IndexRoute component={homePage} />
 
-			<Route path="/authors" component={authorsPage} />
-			<Route path="/author" component={manageAuthorPage} />
+            <Route path="/authors" component={authorsPage} />
+            <Route path="/author" component={manageAuthorPage} />
+            <Route path="/author/:id" component={manageAuthorPage} />
 			<Route path="/about" component={aboutPage} />
 
 			<Redirect from="about-us" to="about" />
