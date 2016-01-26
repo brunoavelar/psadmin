@@ -1,6 +1,7 @@
 var React = require('react');
 var AuthorForm = require('./authorForm');
-var AuthorApi = require('../../api/authorApi')
+var AuthorActions = require('../flux/actions/authorActions');
+var AuthorStore = require('../flux/stores/authorStore');
 var History = require('react-router').History;
 var Lifecycle = require('react-router').Lifecycle;
 var toastr = require('toastr');
@@ -28,7 +29,7 @@ var manageAuthorPage = React.createClass({
         var authorId = this.props.params.id;
 
         if(authorId){
-            this.setState({author: AuthorApi.getAuthorById(authorId)});
+            this.setState({author: AuthorStore.getAuthorById(authorId)});
         }
     },
 
@@ -65,7 +66,7 @@ var manageAuthorPage = React.createClass({
             return;
         }
 
-        AuthorApi.saveAuthor(this.state.author);
+        AuthorActions.createAuthor(this.state.author);
         this.isDirty = false;
         toastr.success('Author saved.');
         this.history.pushState(null, 'authors');
