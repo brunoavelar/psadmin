@@ -1,6 +1,7 @@
 {
     "ecmaFeatures": {
-        "jsx": true
+        "jsx": true,
+        "templateStrings": true
     },
     "plugins": [
         "react"
@@ -20,7 +21,6 @@
         "no-alert": 0,
         "no-lone-blocks": 0,
         "no-console": 0,
-
         "react/display-name": 0,
         "react/forbid-prop-types": 0,
         "react/jsx-boolean-value": 0,
