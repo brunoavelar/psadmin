@@ -8,12 +8,12 @@ var IndexRoute = reactRouter.IndexRoute;
 var Redirect = reactRouter.Redirect;
 var browserHistory = reactRouter.BrowserHistory;
 
-var app = require('./components/app.jsx');
-var homePage = require('./components/homePage.jsx');
-var authorsPage = require('./components/authors/authorsPage.jsx');
-var manageAuthorPage = require('./components/authors/manageAuthorPage.jsx');
-var aboutPage = require('./components/about/aboutPage.jsx');
-var notFoundPage = require('./components/notFoundPage.jsx');
+var app = require('./components/app');
+var homePage = require('./components/homePage');
+var authorsPage = require('./components/authors/authorsPage');
+var manageAuthorPage = require('./components/authors/manageAuthorPage');
+var aboutPage = require('./components/about/aboutPage');
+var notFoundPage = require('./components/notFoundPage');
 
 function logEnteringAbout(location, replaceWith){
 	console.log('Entering about page')

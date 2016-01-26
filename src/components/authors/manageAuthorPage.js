@@ -1,5 +1,5 @@
 var React = require('react');
-var AuthorForm = require('./authorForm.jsx');
+var AuthorForm = require('./authorForm');
 var AuthorApi = require('../../api/authorApi')
 var History = require('react-router').History;
 var Lifecycle = require('react-router').Lifecycle;
