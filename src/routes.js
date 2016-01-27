@@ -15,6 +15,8 @@ var manageAuthorPage = require('./components/authors/manageAuthorPage');
 var aboutPage = require('./components/about/aboutPage');
 var notFoundPage = require('./components/notFoundPage');
 
+var coursesPage = require('./components/courses/coursesPage');
+
 function logEnteringAbout(location, replaceWith){
 	console.log('Entering about page')
 }
@@ -33,6 +35,9 @@ var routes = (
             <Route path="/authors" component={authorsPage} />
             <Route path="/author" component={manageAuthorPage} />
             <Route path="/author/:id" component={manageAuthorPage} />
+
+            <Route path="/courses" component={coursesPage} />
+
 			<Route path="/about" component={aboutPage} />
 
 			<Redirect from="about-us" to="about" />
