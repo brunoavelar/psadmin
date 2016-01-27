@@ -7,7 +7,7 @@ var Lifecycle = require('react-router').Lifecycle;
 var toastr = require('toastr');
 
 var manageAuthorPage = React.createClass({
-	displayName: "manage Author Page",
+	displayName: "Manage Author Page",
     mixins: [ History, Lifecycle ],
 
     isDirty: false,
@@ -71,7 +71,7 @@ var manageAuthorPage = React.createClass({
         }else{
             AuthorActions.createAuthor(this.state.author);
         }
-        
+
         this.isDirty = false;
         toastr.success('Author saved.');
         this.history.pushState(null, 'authors');
@@ -86,7 +86,6 @@ var manageAuthorPage = React.createClass({
                     onSave={this.saveAuthor}
                     errors={this.state.errors}
                 />
-            New State: {this.state.isSaved}
             </div>
         );
 	}
