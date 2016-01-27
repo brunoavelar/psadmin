@@ -1,7 +1,6 @@
 "use strict";
 
 var React = require('react');
-var AuthorActions = require('../flux/actions/authorActions');
 var AuthorStore = require('../flux/stores/authorStore');
 var AuthorList = require('./authorList');
 var Link = require('react-router').Link;
@@ -12,6 +11,18 @@ var AuthorsPage = React.createClass({
         return{
             authors: AuthorStore.getAllAuthors()
         }
+    },
+
+    componentWillMount: function() {
+        AuthorStore.addChangeListener(this.onChange);
+    },
+
+    componentWillUnmount: function() {
+        AuthorStore.removeChangeListener(this.onChange);
+    },
+
+    onChange: function(){
+        this.setState({ authors: AuthorStore.getAllAuthors() });
     },
 
     render: function() {

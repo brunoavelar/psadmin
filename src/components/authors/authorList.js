@@ -2,16 +2,25 @@
 
 var React = require('react');
 var Link = require('react-router').Link;
+var AuthorActions = require('../flux/actions/authorActions');
+var toastr = require('toastr');
 
 var AuthorList = React.createClass({
     propTypes: {
         authors: React.PropTypes.any.isRequired
     },
 
+    deleteAuthor: function(id, event){
+        event.preventDefault();
+        AuthorActions.deleteAuthor(id);
+        toastr.success('Author deleted');
+    },
+
     render: function() {
         var createAuthorRow = function(author){
             return(
                 <tr key={author.id}>
+                    <td><a href="#" onClick={this.deleteAuthor.bind(this, author.id)}>Delete</a></td>
                     <td>
                         <Link to={`/author/${author.id}`}>{author.id}</Link>
                     </td>
@@ -22,9 +31,10 @@ var AuthorList = React.createClass({
 
         return (
             <div>
-				<table className="table">
-					<thead>
-						<tr>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th></th>
 							<th>ID</th>
 							<th>Name</th>
 						</tr>
