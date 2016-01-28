@@ -21,7 +21,7 @@ var CourseList = React.createClass({
         };
         return (
             <div>
-                <table className="table">
+                <table className="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th></th>
