@@ -33,7 +33,8 @@ var CourseApi = {
 			//just simulating creation here. This data
 			//would be generated on the server in a real app.
 			course.id = _generateId(course);
-			courses.push(_clone(course));
+            var clonedCourse = _clone(course);
+			courses.push(clonedCourse);
 		}
 		return course;
 	},

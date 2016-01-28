@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('lodash');
 
 var TextInput = React.createClass({
     displayName: "Dropdown",
@@ -8,8 +9,7 @@ var TextInput = React.createClass({
 		label: React.PropTypes.string.isRequired,
 		name: React.PropTypes.string.isRequired,
 		onChange: React.PropTypes.func.isRequired,
-		values: React.PropTypes.array.isRequired,
-        selected: React.PropTypes.object
+		values: React.PropTypes.array.isRequired
 	},
 
 	render: function() {
@@ -28,12 +28,16 @@ var TextInput = React.createClass({
 			<div className={wrapperClass}>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <div className="field">
+
                     <select
+                        id={this.props.name}
                         className="form-control"
                         name={this.props.name}
                         onChange={this.props.onChange}
                         ref={this.props.name}
+                        defaultValue="Select"
                     >
+                        <option hidden>Select</option>
                         {this.props.values.map(createOption, this)}
                     </select>
 				<div className="input">{this.props.error}</div>
