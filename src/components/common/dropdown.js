@@ -13,7 +13,11 @@ var TextInput = React.createClass({
 	},
 
     onChange: function(event){
-        var newEvent = {};
+        var selectedAuthor = {};
+        selectedAuthor.id = event.target.options[event.target.selectedIndex].value;
+        selectedAuthor.name = event.target.options[event.target.selectedIndex].text;
+
+        var newEvent = { target.name: 'author', target.value: selectedAuthor };
         //this.props.onChange();
     },
 
