@@ -39,6 +39,7 @@ var routes = (
 
             <Route path="/courses" component={coursesPage} />
             <Route path="/course" component={manageCoursesPage} />
+            <Route path="/course/:id" component={manageCoursesPage} />
 
 			<Route path="/about" component={aboutPage} />
 

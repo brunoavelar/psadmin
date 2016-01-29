@@ -3,7 +3,9 @@ var History = require('react-router').History;
 var Lifecycle = require('react-router').Lifecycle;
 var CourseForm = require('./courseForm');
 var CourseActions = require('../flux/actions/courseActions');
+var CourseStore = require('../flux/stores/courseStore');
 var AutorStore = require('../flux/stores/authorStore');
+
 var toastr = require('toastr');
 
 var ManageCourse = React.createClass({
@@ -26,6 +28,14 @@ var ManageCourse = React.createClass({
         };
     },
 
+    componentWillMount: function() {
+        var courseId = this.props.params.id;
+
+        if(courseId){
+            this.setState({course: CourseStore.getCourseById(courseId)});
+        }
+    },
+
     courseFormIsValid: function() {
         var isValid = true;
         this.state.errors = {};
@@ -35,7 +45,6 @@ var ManageCourse = React.createClass({
             isValid = false;
         }
 
-        console.log(this.state.course.author.length);
         if(this.state.course.author.length < 3){
             this.state.errors.author = "Select an author";
             isValid = false;
@@ -63,7 +72,7 @@ var ManageCourse = React.createClass({
         }
 
         if(this.state.course.id){
-            //CourseActions.updateCourse(this.state.course);
+            CourseActions.updateCourse(this.state.course);
         }else{
             CourseActions.createCourse(this.state.course);
         }
@@ -80,7 +89,7 @@ var ManageCourse = React.createClass({
 		var value = event.target.value;
         var course = this.state.course;
         course[field] = value;
-        console.log(course);
+        
 		return this.setState({ course: course });
 	},
 

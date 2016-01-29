@@ -1,5 +1,5 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
+var Link = require('react-router').Link;
 
 var CourseList = React.createClass({
     propTypes: {
@@ -12,7 +12,7 @@ var CourseList = React.createClass({
                 <tr key={course.id}>
                     <td>Watch</td>
                     <td>Delete</td>
-                    <td>{course.title}</td>
+                    <td><Link to={`/course/${course.id}`}> {course.title}</Link></td>
                     <td>{course.author.name}</td>
                     <td>{course.category}</td>
                     <td>{course.length}</td>

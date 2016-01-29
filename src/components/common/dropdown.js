@@ -12,6 +12,11 @@ var TextInput = React.createClass({
 		values: React.PropTypes.array.isRequired
 	},
 
+    onChange: function(event){
+        var newEvent = {};
+        //this.props.onChange();
+    },
+
 	render: function() {
 		var wrapperClass = "form-group";
 		if(this.props.error && this.props.error.length > 0){
@@ -33,9 +38,9 @@ var TextInput = React.createClass({
                         id={this.props.name}
                         className="form-control"
                         name={this.props.name}
-                        onChange={this.props.onChange}
+                        onChange={this.onChange}
                         ref={this.props.name}
-                        defaultValue="Select"
+                        defaultValue={this.props.selected}
                     >
                         <option hidden>Select</option>
                         {this.props.values.map(createOption, this)}

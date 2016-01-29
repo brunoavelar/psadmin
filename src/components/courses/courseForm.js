@@ -24,7 +24,7 @@ var CourseForm = React.createClass({
 
                 <Dropdown name="author" label="Author"
                     values={this.props.authors}
-                    selected={this.props.course.author}
+                    selected={this.props.course.author.id}
                     onChange={this.props.onChange}
                     error={this.props.errors.author}
                 />
