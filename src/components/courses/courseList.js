@@ -1,9 +1,18 @@
 var React = require('react');
 var Link = require('react-router').Link;
+var toastr = require('toastr');
+var CourseActions = require('../flux/actions/CourseActions');
 
 var CourseList = React.createClass({
     propTypes: {
         courses: React.PropTypes.any.isRequired
+    },
+
+    deleteCourse: function(courseId, event){
+      event.preventDefault();
+
+      CourseActions.deleteCourse(courseId);
+      toastr.success('Author deleted');
     },
 
     render: function() {
@@ -11,7 +20,7 @@ var CourseList = React.createClass({
             return(
                 <tr key={course.id}>
                     <td>Watch</td>
-                    <td>Delete</td>
+                    <td><a href="#" onClick={this.deleteCourse.bind(this, course.id)}>Delete</a></td>
                     <td><Link to={`/course/${course.id}`}> {course.title}</Link></td>
                     <td>{course.author.name}</td>
                     <td>{course.category}</td>

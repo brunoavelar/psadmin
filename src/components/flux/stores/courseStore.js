@@ -42,6 +42,10 @@ Dispatcher.register(function(action){
             courses.push(action.course);
             CourseStore.emitChange();
             break;
+        case ActionTypes.DELETE_COURSE:
+          _.remove(courses, {id: action.id});
+          CourseStore.emitChange();
+          break;
         default:
 
     }
