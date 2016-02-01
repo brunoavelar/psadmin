@@ -24,7 +24,6 @@ var CourseActions = {
     },
 
     updateCourse: function(course){
-        course.author = getCourseActorById(course.author);
         var updatedCourse = CourseApi.saveCourse(course);
 
         Dispatcher.dispatch({
