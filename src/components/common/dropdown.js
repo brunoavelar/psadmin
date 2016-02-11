@@ -31,7 +31,7 @@ var TextInput = React.createClass({
             return(
                 <option key={value.id} value={value.id}>{value.firstName +' '+ value.lastName}</option>
             );
-        }
+        };
 
 		return (
 			<div className={wrapperClass}>

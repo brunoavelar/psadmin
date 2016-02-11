@@ -30,7 +30,7 @@ var CourseActions = {
         Dispatcher.dispatch({
             actionType: ActionTypes.UPDATE_COURSE,
             course: updatedCourse
-        })
+        });
     }
 };
 

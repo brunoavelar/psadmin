@@ -10,7 +10,7 @@ var AuthorsPage = React.createClass({
     getInitialState: function(){
         return{
             authors: AuthorStore.getAllAuthors()
-        }
+        };
     },
 
     componentWillMount: function() {

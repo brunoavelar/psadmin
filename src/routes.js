@@ -19,11 +19,11 @@ var coursesPage = require('./components/courses/coursesPage');
 var manageCoursesPage = require('./components/courses/manageCoursePage');
 
 function logEnteringAbout(location, replaceWith){
-	console.log('Entering about page')
+	console.log('Entering about page');
 }
 
 function logLeavingAbout(){
-	console.log('Leaving about page')
+	console.log('Leaving about page');
 }
 
 var routes = (

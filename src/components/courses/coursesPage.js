@@ -17,9 +17,10 @@ var CoursesPage = React.createClass({
         CourseStore.removeChangeListener(this.onChange);
     },
 
-    onChange: function(){
+    onChange: function() {
         this.setState({ courses: CourseStore.getAllCourses() });
     },
+
 
     render: function() {
         return (

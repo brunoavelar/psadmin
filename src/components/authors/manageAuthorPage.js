@@ -14,15 +14,15 @@ var manageAuthorPage = React.createClass({
 
     routerWillLeave: function(nextLocation) {
         if (this.isDirty){
-            return 'Your work is not saved! Are you sure you want to leave?'
+            return 'Your work is not saved! Are you sure you want to leave?';
         }
     },
 
 	getInitialState: function(){
-		return{
+		return {
 			author: { id: '', firstName: '', lastName: '' },
             errors: {}
-		}
+		};
 	},
 
     componentWillMount: function() {
