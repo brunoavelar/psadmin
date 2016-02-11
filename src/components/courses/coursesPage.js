@@ -2,6 +2,8 @@ var React = require('react');
 var Link = require('react-router').Link;
 var CourseStore = require('../flux/stores/courseStore');
 var CourseList = require('./courseList');
+var CourseActions = require('../flux/actions/courseActions');
+var toastr = require('toastr');
 
 var CoursesPage = React.createClass({
     getInitialState: function() {
@@ -21,6 +23,11 @@ var CoursesPage = React.createClass({
         this.setState({ courses: CourseStore.getAllCourses() });
     },
 
+    deleteCourse: function(id, event) {
+        event.preventDefault();
+        CourseActions.deleteCourse(id);
+        toastr.success('Course deleted');
+    },
 
     render: function() {
         return (
@@ -29,6 +36,7 @@ var CoursesPage = React.createClass({
                 <Link to="course" className="btn btn-default">Add course</Link>
                 <CourseList
                     courses={this.state.courses}
+                    onDelete={this.deleteCourse}
                 />
             </div>
         );

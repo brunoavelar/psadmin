@@ -3,7 +3,12 @@ var Link = require('react-router').Link;
 
 var CourseList = React.createClass({
     propTypes: {
-        courses: React.PropTypes.any.isRequired
+        courses: React.PropTypes.any.isRequired,
+        onDelete: React.PropTypes.func.isRequired
+    },
+
+    deleteHandler: function(id, event){
+        this.props.onDelete(id, event);
     },
 
     render: function() {
@@ -11,7 +16,9 @@ var CourseList = React.createClass({
             return(
                 <tr key={course.id}>
                     <td>Watch</td>
-                    <td>Delete</td>
+                    <td>
+                        <a href="#" id={course.id} onClick={this.deleteHandler.bind(this, course.id)}>Delete</a>
+                    </td>
                     <td><Link to={`/course/${course.id}`}> {course.title}</Link></td>
                     <td>{course.author.name}</td>
                     <td>{course.category}</td>
