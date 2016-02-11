@@ -38,29 +38,29 @@ var ManageCourse = React.createClass({
 
     courseFormIsValid: function() {
         var isValid = true;
-        this.state.errors = {};
+        var errors = {};
 
         if(this.state.course.title.length < 3){
-            this.state.errors.title = "Title must be at least 3 characters.";
+            errors.title = "Title must be at least 3 characters.";
             isValid = false;
         }
 
         if(this.state.course.author.length < 3){
-            this.state.errors.author = "Select an author";
+            errors.author = "Select an author";
             isValid = false;
         }
 
         if(this.state.course.category.length < 3){
-            this.state.errors.category = "Category must be at least 3 characters.";
+            errors.category = "Category must be at least 3 characters.";
             isValid = false;
         }
 
         if(this.state.course.length.length < 3){
-            this.state.errors.length = "Length must be at least 3 characters.";
+            errors.length = "Length must be at least 3 characters.";
             isValid = false;
         }
 
-        this.setState({ errors: this.state.errors });
+        this.setState({ errors: errors });
         return isValid;
     },
 
@@ -89,7 +89,7 @@ var ManageCourse = React.createClass({
 		var value = event.target.value;
         var course = this.state.course;
         course[field] = value;
-        
+
 		return this.setState({ course: course });
 	},
 

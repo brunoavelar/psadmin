@@ -26,7 +26,9 @@ var CoursesPage = React.createClass({
             <div>
                 <h1>Courses</h1>
                 <Link to="course" className="btn btn-default">Add course</Link>
-                <CourseList courses={this.state.courses} />
+                <CourseList
+                    courses={this.state.courses}
+                />
             </div>
         );
     }

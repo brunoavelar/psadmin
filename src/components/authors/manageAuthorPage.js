@@ -37,25 +37,26 @@ var manageAuthorPage = React.createClass({
         this.isDirty = true;
         var field = event.target.name;
 		var value = event.target.value;
-        this.state.author[field] = value;
+        var author = this.state.author;
+        author[field] = value;
 		return this.setState({ author: this.state.author });
 	},
 
     authorFormIsValid: function(){
         var isValid = true;
-        this.state.errors = {};
+        var erros = this.state.errors;
 
         if(this.state.author.firstName.length < 3){
-            this.state.errors.firstName = "First name must be at least 3 characters.";
+            erros.firstName = "First name must be at least 3 characters.";
             isValid = false;
         }
 
         if(this.state.author.lastName.length < 3){
-            this.state.errors.lastName = "Last name must be at least 3 characters.";
+            erros.lastName = "Last name must be at least 3 characters.";
             isValid = false;
         }
 
-        this.setState({ errors: this.state.errors });
+        this.setState({ errors: erros });
         return isValid;
     },
 

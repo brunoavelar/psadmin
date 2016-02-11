@@ -19,7 +19,7 @@ var TextInput = React.createClass({
 		}
 
 		return (
-			<div className={wrapperClass}>
+            <div className={wrapperClass}>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <div className="field">
                     <input
@@ -29,7 +29,7 @@ var TextInput = React.createClass({
                         placeholder={this.props.placeholder}
                         ref={this.props.name}
                         type="text"
-						value={this.props.value}
+                        value={this.props.value}
                     />
 				<div className="input">{this.props.error}</div>
 				</div>
