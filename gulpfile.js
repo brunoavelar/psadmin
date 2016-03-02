@@ -27,7 +27,7 @@ var config = {
         dist: './dist',
         mainJs: './src/main.js'
     }
-}
+};
 
 //Start a local development server
 gulp.task('connect', function() {
@@ -81,7 +81,7 @@ gulp.task('images', function(){
 
 gulp.task('lint', function() {
     return gulp.src(config.paths.js)
-        .pipe(lint({config: 'eslint.config.json'}))
+        .pipe(lint())
         .pipe(lint.format());
 });
 

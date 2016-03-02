@@ -20,7 +20,9 @@ var AuthorList = React.createClass({
         var createAuthorRow = function(author){
             return(
                 <tr key={author.id}>
-                    <td><a href="#" onClick={this.deleteAuthor.bind(this, author.id)}>Delete</a></td>
+                    <td>
+                        <a href="#" onClick={this.deleteAuthor.bind(this, author.id)}>Delete</a>
+                    </td>
                     <td>
                         <Link to={`/author/${author.id}`}>{author.id}</Link>
                     </td>
@@ -35,15 +37,15 @@ var AuthorList = React.createClass({
                     <thead>
                         <tr>
                             <th></th>
-							<th>ID</th>
-							<th>Name</th>
-						</tr>
-					</thead>
-					<tbody>
-					{this.props.authors.map(createAuthorRow, this)}
-					</tbody>
-				</table>
-			</div>
+                            <th>ID</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.authors.map(createAuthorRow, this)}
+                    </tbody>
+                </table>
+            </div>
 
 			);
     }

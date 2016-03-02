@@ -7,7 +7,7 @@ var Lifecycle = require('react-router').Lifecycle;
 var toastr = require('toastr');
 
 var manageAuthorPage = React.createClass({
-	displayName: "Manage Author Page",
+    displayName: "Manage Author Page",
     mixins: [ History, Lifecycle ],
 
     isDirty: false,
@@ -18,12 +18,12 @@ var manageAuthorPage = React.createClass({
         }
     },
 
-	getInitialState: function(){
-		return {
-			author: { id: '', firstName: '', lastName: '' },
+    getInitialState: function(){
+        return {
+            author: { id: '', firstName: '', lastName: '' },
             errors: {}
-		};
-	},
+        };
+    },
 
     componentWillMount: function() {
         var authorId = this.props.params.id;
@@ -33,14 +33,14 @@ var manageAuthorPage = React.createClass({
         }
     },
 
-	setAuthorState: function(event){
+    setAuthorState: function(event){
         this.isDirty = true;
         var field = event.target.name;
-		var value = event.target.value;
+        var value = event.target.value;
         var author = this.state.author;
         author[field] = value;
-		return this.setState({ author: this.state.author });
-	},
+        return this.setState({ author: this.state.author });
+    },
 
     authorFormIsValid: function(){
         var isValid = true;
@@ -78,18 +78,20 @@ var manageAuthorPage = React.createClass({
         this.history.pushState(null, 'authors');
     },
 
-	render: function() {
-		return (
+    render: function() {
+        return (
             <div>
+
                 <AuthorForm
                     author={this.state.author}
                     onChange={this.setAuthorState}
                     onSave={this.saveAuthor}
                     errors={this.state.errors}
                 />
+
             </div>
         );
-	}
+    }
 
 });
 

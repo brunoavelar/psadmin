@@ -44,4 +44,4 @@ var CoursesPage = React.createClass({
 
 });
 
-    module.exports = CoursesPage;
+module.exports = CoursesPage;

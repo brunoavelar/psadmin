@@ -4,13 +4,13 @@ var _ = require('lodash');
 var TextInput = React.createClass({
     displayName: "Dropdown",
 
-	propTypes: {
-		error: React.PropTypes.string,
-		label: React.PropTypes.string.isRequired,
-		name: React.PropTypes.string.isRequired,
-		onChange: React.PropTypes.func.isRequired,
-		values: React.PropTypes.array.isRequired
-	},
+    propTypes: {
+        error: React.PropTypes.string,
+        label: React.PropTypes.string.isRequired,
+        name: React.PropTypes.string.isRequired,
+        onChange: React.PropTypes.func.isRequired,
+        values: React.PropTypes.array.isRequired
+    },
 
     onChange: function(event){
         var selectedAuthor = {};
@@ -21,23 +21,28 @@ var TextInput = React.createClass({
         this.props.onChange(newEvent);
     },
 
-	render: function() {
-		var wrapperClass = "form-group";
-		if(this.props.error && this.props.error.length > 0){
-			wrapperClass += " " + "has-error";
-		}
+    render: function() {
+        var wrapperClass = "form-group";
+        if(this.props.error && this.props.error.length > 0){
+            wrapperClass += " " + "has-error";
+        }
 
         var createOption = function(value){
             return(
-                <option key={value.id} value={value.id}>{value.firstName +' '+ value.lastName}</option>
+                <option key={value.id} value={value.id}>
+                    {value.firstName +' '+ value.lastName}
+                </option>
             );
         };
 
-		return (
-			<div className={wrapperClass}>
-                <label htmlFor={this.props.name}>{this.props.label}</label>
-                <div className="field">
+        return (
+            <div className={wrapperClass}>
 
+                <label htmlFor={this.props.name}>
+                    {this.props.label}
+                </label>
+
+                <div className="field">
                     <select
                         id={this.props.name}
                         className="form-control"
@@ -49,11 +54,16 @@ var TextInput = React.createClass({
                         <option hidden>Select</option>
                         {this.props.values.map(createOption, this)}
                     </select>
-				<div className="input">{this.props.error}</div>
-				</div>
-			</div>
-		);
-	}
+
+                    <div className="input">
+                        {this.props.error}
+                    </div>
+
+                </div>
+                
+            </div>
+        );
+    }
 
 });
 

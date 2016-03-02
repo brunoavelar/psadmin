@@ -86,12 +86,12 @@ var ManageCourse = React.createClass({
         this.isDirty = true;
 
         var field = event.target.name;
-		var value = event.target.value;
+        var value = event.target.value;
         var course = this.state.course;
         course[field] = value;
 
-		return this.setState({ course: course });
-	},
+        return this.setState({ course: course });
+    },
 
     render: function() {
         return (
@@ -102,7 +102,7 @@ var ManageCourse = React.createClass({
                 onSave={this.saveCourse}
                 errors={this.state.errors}
             />
-            );
+        );
     }
 
 });

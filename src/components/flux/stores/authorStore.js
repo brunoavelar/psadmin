@@ -33,27 +33,27 @@ var AuthorStore = assign({}, EventEmitter.prototype, {
 
 Dispatcher.register(function(action){
     switch (action.actionType) {
-        case ActionTypes.INITIALIZE:
-            authors = action.initialData.authors;
-            AuthorStore.emitChange();
-            break;
-        case ActionTypes.CREATE_AUTHOR:
-            authors.push(action.author);
-            AuthorStore.emitChange();
-            break;
-        case ActionTypes.UPDATE_AUTHOR:
-            var existingAuthor = _.find(authors, {id: action.author.id});
-            var existingAuthorIndex = _.indexOf(authors, existingAuthor);
-            authors.splice(existingAuthorIndex, 1, action.author);
-            AuthorStore.emitChange();
-            break;
-        case ActionTypes.DELETE_AUTHOR:
-            _.remove(authors, function(author){
-                return action.id === author.id;
-            });
-            AuthorStore.emitChange();
-            break;
-        default:
+    case ActionTypes.INITIALIZE:
+        authors = action.initialData.authors;
+        AuthorStore.emitChange();
+        break;
+    case ActionTypes.CREATE_AUTHOR:
+        authors.push(action.author);
+        AuthorStore.emitChange();
+        break;
+    case ActionTypes.UPDATE_AUTHOR:
+        var existingAuthor = _.find(authors, {id: action.author.id});
+        var existingAuthorIndex = _.indexOf(authors, existingAuthor);
+        authors.splice(existingAuthorIndex, 1, action.author);
+        AuthorStore.emitChange();
+        break;
+    case ActionTypes.DELETE_AUTHOR:
+        _.remove(authors, function(author){
+            return action.id === author.id;
+        });
+        AuthorStore.emitChange();
+        break;
+    default:
 
     }
 });
