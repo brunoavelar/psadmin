@@ -34,6 +34,7 @@ var CourseStore = assign({}, EventEmitter.prototype, {
 
 Dispatcher.register(function(action){
     switch (action.actionType) {
+<<<<<<< HEAD
     case ActionTypes.INITIALIZE:
         courses = action.initialData.courses;
         CourseStore.emitChange();
@@ -49,6 +50,21 @@ Dispatcher.register(function(action){
         CourseStore.emitChange();
         break;
     default:
+=======
+        case ActionTypes.INITIALIZE:
+            courses = action.initialData.courses;
+            CourseStore.emitChange();
+            break;
+        case ActionTypes.CREATE_COURSE:
+            courses.push(action.course);
+            CourseStore.emitChange();
+            break;
+        case ActionTypes.DELETE_COURSE:
+          _.remove(courses, {id: action.id});
+          CourseStore.emitChange();
+          break;
+        default:
+>>>>>>> eaa37a17b86a027300a20e7e48693dee0e176952
 
     }
 });

@@ -93,6 +93,7 @@ var ManageCourse = React.createClass({
         return this.setState({ course: course });
     },
 
+
     render: function() {
         return (
             <CourseForm

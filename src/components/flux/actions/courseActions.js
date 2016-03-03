@@ -33,12 +33,12 @@ var CourseActions = {
         });
     },
 
-    deleteCourse: function(id){
-        var updatedCourse = CourseApi.deleteCourse(id);
+    deleteCourse: function(courseId){
+        CourseApi.deleteCourse(courseId);
 
         Dispatcher.dispatch({
             actionType: ActionTypes.DELETE_COURSE,
-            id: id
+            id: courseId
         });
     }
 };
