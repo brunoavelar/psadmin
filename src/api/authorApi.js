@@ -3,6 +3,7 @@
 //This file is mocking a web API by hitting hard coded data.
 var authors = require('./authorData').authors;
 var _ = require('lodash');
+var $ = require('jquery');
 
 //This would be performed on the server in a real app. Just stubbing in.
 var _generateId = function(author) {
@@ -15,20 +16,28 @@ var _clone = function(item) {
 
 var AuthorApi = {
     getAllAuthors: function() {
-        return _clone(authors); 
+        var authors;
+        $.ajax('/getAuthors',
+            {
+                async: false,
+                success: function(data){
+                    authors = data;
+                }
+            });
+        return authors;
     },
 
     getAuthorById: function(id) {
         var author = _.find(authors, {id: id});
         return _clone(author);
     },
-    
+
     saveAuthor: function(author) {
         //pretend an ajax call to web api is made here
         console.log('Pretend this just saved the author to the DB via AJAX call...');
-        
+
         if (author.id) {
-            var existingAuthorIndex = _.indexOf(authors, _.find(authors, {id: author.id})); 
+            var existingAuthorIndex = _.indexOf(authors, _.find(authors, {id: author.id}));
             authors.splice(existingAuthorIndex, 1, author);
         } else {
             //Just simulating creation here.

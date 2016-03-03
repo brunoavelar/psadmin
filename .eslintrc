@@ -3,12 +3,13 @@
         "browser": true,
         "node": true,
         "jquery": true,
-        "es6": false
+        "es6": true
     },
     "ecmaFeatures": {
         "experimentalObjectRestSpread": true,
         "jsx": true,
-        "templateStrings": true
+        "templateStrings": true,
+        "modules": true
     },
     "sourceType": "module",
     "plugins": [
