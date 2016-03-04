@@ -1,29 +1,30 @@
 "use strict";
 
 var Dispatcher = require('../appDispatcher');
-var AuthorApi = require('../../../api/authorApi');
 var ActionTypes = require('../../constants/actionTypes');
 
-var AuthorActions = {
-    createAuthor: function(author){
+import AuthorApi from '../../../api/authorApi';
+
+class AuthorActions {
+    createAuthor(author) {
         var newAuthor = AuthorApi.saveAuthor(author);
 
         Dispatcher.dispatch({
             actionType: ActionTypes.CREATE_AUTHOR,
             author: newAuthor
         });
-    },
+    }
 
-    updateAuthor: function(author){
+    updateAuthor(author) {
         var updatedAuthor = AuthorApi.saveAuthor(author);
 
         Dispatcher.dispatch({
             actionType: ActionTypes.UPDATE_AUTHOR,
             author: updatedAuthor
         });
-    },
+    }
 
-    deleteAuthor: function(id){
+    deleteAuthor(id) {
         AuthorApi.deleteAuthor(id);
 
         Dispatcher.dispatch({
@@ -31,6 +32,6 @@ var AuthorActions = {
             id: id
         });
     }
-};
+}
 
-module.exports = AuthorActions;
+export default new AuthorActions();

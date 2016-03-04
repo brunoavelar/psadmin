@@ -2,8 +2,9 @@
 
 var React = require('react');
 var Link = require('react-router').Link;
-var AuthorActions = require('../flux/actions/authorActions');
 var toastr = require('toastr');
+
+import AuthorActions from '../flux/actions/authorActions';
 
 var AuthorList = React.createClass({
     propTypes: {
@@ -13,7 +14,7 @@ var AuthorList = React.createClass({
     deleteAuthor: function(id, event){
         event.preventDefault();
         AuthorActions.deleteAuthor(id);
-        toastr.success('Course deleted');
+        toastr.success('Author deleted');
     },
 
     render: function() {

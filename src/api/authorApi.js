@@ -1,9 +1,7 @@
-"use strict";
+import _ from 'lodash';
+import $ from 'jquery';
 
-//This file is mocking a web API by hitting hard coded data.
 var authors = require('./authorData').authors;
-var _ = require('lodash');
-var $ = require('jquery');
 
 //This would be performed on the server in a real app. Just stubbing in.
 var _generateId = function(author) {
@@ -14,8 +12,8 @@ var _clone = function(item) {
     return JSON.parse(JSON.stringify(item)); //return cloned copy so that the item is passed by value instead of by reference
 };
 
-var AuthorApi = {
-    getAllAuthors: function() {
+class AuthorApi {
+    getAllAuthors() {
         var authors;
         $.ajax('/getAuthors',
             {
@@ -25,14 +23,14 @@ var AuthorApi = {
                 }
             });
         return authors;
-    },
+    }
 
-    getAuthorById: function(id) {
+    getAuthorById(id) {
         var author = _.find(authors, {id: id});
         return _clone(author);
-    },
+    }
 
-    saveAuthor: function(author) {
+    saveAuthor(author) {
         //pretend an ajax call to web api is made here
         console.log('Pretend this just saved the author to the DB via AJAX call...');
 
@@ -48,12 +46,12 @@ var AuthorApi = {
         }
 
         return _clone(author);
-    },
+    }
 
-    deleteAuthor: function(id) {
+    deleteAuthor(id) {
         console.log('Pretend this just deleted the author from the DB via an AJAX call...');
         _.remove(authors, { id: id});
     }
-};
+}
 
-module.exports = AuthorApi;
+export default new AuthorApi();

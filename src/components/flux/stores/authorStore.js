@@ -1,61 +1,80 @@
-"use strict";
-
 var Dispatcher = require('../appDispatcher');
 var ActionTypes = require('../../constants/actionTypes');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
-var _ = require('lodash');
-var CHANGE_EVENT = 'change';
 
-var authors = [];
+import _ from 'lodash';
 
-var AuthorStore = assign({}, EventEmitter.prototype, {
-    addChangeListener: function(callback){
-        this.on(CHANGE_EVENT, callback);
-    },
 
-    removeChangeListener: function(callback){
-        this.removeListener(CHANGE_EVENT, callback);
-    },
+class AuthorStore extends EventEmitter{
+    constructor(props){
+        super(props);
+        this.authors = [];
+        this.CHANGE_EVENT = 'change';
 
-    emitChange: function(){
-        this.emit(CHANGE_EVENT);
-    },
-
-    getAllAuthors: function(){
-        return authors;
-    },
-
-    getAuthorById: function(id){
-        return _.find(authors, {id: id});
+        this.setupDispatcher();
     }
-});
 
-Dispatcher.register(function(action){
-    switch (action.actionType) {
-    case ActionTypes.INITIALIZE:
-        authors = action.initialData.authors;
-        AuthorStore.emitChange();
-        break;
-    case ActionTypes.CREATE_AUTHOR:
-        authors.push(action.author);
-        AuthorStore.emitChange();
-        break;
-    case ActionTypes.UPDATE_AUTHOR:
-        var existingAuthor = _.find(authors, {id: action.author.id});
-        var existingAuthorIndex = _.indexOf(authors, existingAuthor);
-        authors.splice(existingAuthorIndex, 1, action.author);
-        AuthorStore.emitChange();
-        break;
-    case ActionTypes.DELETE_AUTHOR:
-        _.remove(authors, function(author){
+    setupDispatcher(){
+        Dispatcher.register(action => {
+            switch (action.actionType) {
+            case ActionTypes.INITIALIZE:
+                this._initialize(action);
+                break;
+            case ActionTypes.CREATE_AUTHOR:
+                this._createAuthor(action);
+                break;
+            case ActionTypes.UPDATE_AUTHOR:
+                this._updateAuthor();
+                break;
+            case ActionTypes.DELETE_AUTHOR:
+                this._deleteAuthor(action);
+                break;
+            default:
+
+            }
+        });
+    }
+
+    _initialize(action){
+        this.authors = action.initialData.authors;
+        this.emit(this.CHANGE_EVENT);
+    }
+
+    _createAuthor(action){
+        this.authors.push(action.author);
+        this.emit(this.CHANGE_EVENT);
+    }
+
+    _updateAuthor(action){
+        var existingAuthor = _.find(this.authors, {id: action.author.id});
+        var existingAuthorIndex = _.indexOf(this.authors, existingAuthor);
+        this.authors.splice(existingAuthorIndex, 1, action.author);
+        this.emit(this.CHANGE_EVENT);
+    }
+
+    _deleteAuthor(action){
+        _.remove(this.authors, function(author){
             return action.id === author.id;
         });
-        AuthorStore.emitChange();
-        break;
-    default:
-
+        this.emit(this.CHANGE_EVENT);
     }
-});
 
-module.exports = AuthorStore;
+    addChangeListener(callback){
+        this.on(this.CHANGE_EVENT, callback);
+    }
+
+    removeChangeListener(callback){
+        this.removeListener(this.CHANGE_EVENT, callback);
+    }
+
+    getAllAuthors(){
+        return this.authors;
+    }
+
+    getAuthorById(id){
+        return _.find(this.authors, {id: id});
+    }
+}
+
+export default new AuthorStore();

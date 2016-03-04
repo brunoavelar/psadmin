@@ -1,9 +1,10 @@
 "use strict";
 
 var React = require('react');
-var AuthorStore = require('../flux/stores/authorStore');
 var AuthorList = require('./authorList');
 var Link = require('react-router').Link;
+
+import AuthorStore from '../flux/stores/authorStore';
 
 var AuthorsPage = React.createClass({
     displayName: "Authors page",

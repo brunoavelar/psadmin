@@ -1,10 +1,11 @@
 var React = require('react');
 var AuthorForm = require('./authorForm');
-var AuthorActions = require('../flux/actions/authorActions');
-var AuthorStore = require('../flux/stores/authorStore');
 var History = require('react-router').History;
 var Lifecycle = require('react-router').Lifecycle;
 var toastr = require('toastr');
+
+import AuthorStore from '../flux/stores/authorStore';
+import AuthorActions from '../flux/actions/authorActions';
 
 var manageAuthorPage = React.createClass({
     displayName: "Manage Author Page",
