@@ -23,11 +23,11 @@ class InitializeActions {
 
     initApp(){
         this._setupServer();
+        AuthorApi.getAllAuthors();
 
         Dispatcher.dispatch({
             actionType: ActionTypes.INITIALIZE,
             initialData: {
-                authors: AuthorApi.getAllAuthors(),
                 courses: CourseApi.getAllCourses()
             }
         });

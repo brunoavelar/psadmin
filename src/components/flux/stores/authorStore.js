@@ -21,6 +21,9 @@ class AuthorStore extends EventEmitter{
             case ActionTypes.INITIALIZE:
                 this._initialize(action);
                 break;
+            case ActionTypes.RECEIVE_AUTHORS:
+                this._receiveAuthors(action);
+                break;
             case ActionTypes.CREATE_AUTHOR:
                 this._createAuthor(action);
                 break;
@@ -34,6 +37,11 @@ class AuthorStore extends EventEmitter{
 
             }
         });
+    }
+
+    _receiveAuthors(action){
+        this.authors = action.authors;
+        this.emit(this.CHANGE_EVENT);
     }
 
     _initialize(action){

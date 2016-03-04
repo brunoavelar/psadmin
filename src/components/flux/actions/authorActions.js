@@ -6,6 +6,13 @@ var ActionTypes = require('../../constants/actionTypes');
 import AuthorApi from '../../../api/authorApi';
 
 class AuthorActions {
+    receiveAuthors(authors){
+        Dispatcher.dispatch({
+            actionType: ActionTypes.RECEIVE_AUTHORS,
+            authors: authors
+        });
+    }
+
     createAuthor(author) {
         var newAuthor = AuthorApi.saveAuthor(author);
 

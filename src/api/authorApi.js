@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import $ from 'jquery';
+import authorActions from '../components/flux/actions/authorActions';
 
 var authors = require('./authorData').authors;
 
@@ -14,15 +15,10 @@ var _clone = function(item) {
 
 class AuthorApi {
     getAllAuthors() {
-        var authors;
-        $.ajax('/getAuthors',
-            {
-                async: false,
-                success: function(data){
-                    authors = data;
-                }
-            });
-        return authors;
+        $.get('/getAuthors')
+        .success(data => (
+            authorActions.receiveAuthors(data)
+        ));
     }
 
     getAuthorById(id) {

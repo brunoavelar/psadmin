@@ -10,7 +10,7 @@ var AuthorsPage = React.createClass({
     displayName: "Authors page",
     getInitialState: function(){
         return{
-            authors: AuthorStore.getAllAuthors()
+            authors: []
         };
     },
 

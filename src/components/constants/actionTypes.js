@@ -4,6 +4,7 @@ var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
     INITIALIZE: null,
+    REVEIVE_AUTHORS: null,
     CREATE_AUTHOR: null,
     UPDATE_AUTHOR: null,
     DELETE_AUTHOR: null,
