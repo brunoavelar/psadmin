@@ -25,7 +25,8 @@ var config = {
             'node_modules/toastr/toastr.scss'
         ],
         dist: './dist',
-        mainJs: './src/main.js'
+        mainJs: './src/main.js',
+        jsons: './src/**/*.json'
     }
 };
 
